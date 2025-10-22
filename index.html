@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Crisol Terapéutico - Psicología Clínica Integral</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-fuerte: #1a3a5f;
+            --azul-bajo: #4a7ba6;
+            --morado: #6c63ff;
+            --dorado: #d4af37;
+            --gris-claro: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--azul-fuerte);
+            font-size: 1.8rem;
+        }
+        
+        .navbar-brand span {
+            color: var(--dorado);
+        }
+        
+        .nav-link {
+            color: var(--azul-fuerte);
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--morado);
+        }
+        
+        .btn-primary {
+            background-color: var(--morado);
+            border-color: var(--morado);
+            padding: 10px 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--azul-fuerte);
+            border-color: var(--azul-fuerte);
+            transform: translateY(-2px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--azul-fuerte) 0%, var(--morado) 100%);
+            color: white;
+            padding: 120px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--dorado);
+        }
+        
+        .about-section {
+            padding: 100px 0;
+            background-color: var(--gris-claro);
+        }
+        
+        .services-section {
+            padding: 100px 0;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--morado);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--morado);
+            margin-bottom: 20px;
+        }
+        
+        .team-section {
+            padding: 100px 0;
+            background-color: var(--gris-claro);
+        }
+        
+        .team-member {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .team-member h5 {
+            margin-top: 15px;
+            color: var(--azul-fuerte);
+        }
+        
+        .team-member p {
+            color: var(--azul-bajo);
+            font-size: 0.9rem;
+        }
+        
+        .testimonials-section {
+            padding: 100px 0;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            margin: 15px;
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            font-size: 5rem;
+            color: rgba(108, 99, 255, 0.1);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: Georgia, serif;
+        }
+        
+        .faq-section {
+            padding: 100px 0;
+            background-color: var(--gris-claro);
+        }
+        
+        .accordion-button {
+            font-weight: 500;
+            color: var(--azul-fuerte);
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(108, 99, 255, 0.1);
+            color: var(--azul-fuerte);
+        }
+        
+        .pricing-section {
+            padding: 100px 0;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 40px 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .pricing-card.featured {
+            border-top: 5px solid var(--dorado);
+            transform: scale(1.05);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--azul-fuerte);
+            margin: 20px 0;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: var(--azul-bajo);
+        }
+        
+        .contact-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--azul-fuerte) 0%, var(--morado) 100%);
+            color: white;
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-info i {
+            color: var(--dorado);
+            margin-right: 10px;
+            font-size: 1.2rem;
+            width: 25px;
+        }
+        
+        footer {
+            background-color: var(--azul-fuerte);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-links h5 {
+            color: var(--dorado);
+            margin-bottom: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--dorado);
+            transform: translateY(-3px);
+        }
+        
+        .certifications-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .certification-logo {
+            max-height: 80px;
+            margin: 20px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .certification-logo:hover {
+            opacity: 1;
+        }
+        
+        .history-section {
+            padding: 100px 0;
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        /* Animaciones */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section p {
+                font-size: 1rem;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">El <span>Crisol</span> Terapéutico</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nosotros">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#equipo">Equipo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#precios">Precios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="fade-in">Psicología Clínica Integral</h1>
+                    <p class="fade-in">7 años transformando vidas a través de un enfoque terapéutico personalizado y profesional. Tu bienestar mental es nuestra prioridad.</p>
+                    <a href="#contacto" class="btn btn-primary fade-in">Agenda tu cita</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="img-fluid rounded fade-in" alt="Psicología Clínica">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros / Historia -->
+    <section id="nosotros" class="history-section">
+        <div class="container">
+            <h2 class="section-title">Nuestra Historia</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <p class="fade-in">Fundado en 2018, El Crisol Terapéutico nació de la visión de la Dra. Karen Paola Mut Balan de crear un espacio donde la psicología clínica se integrara con un enfoque humanista y profesional. El nombre "Crisol" simboliza el proceso de transformación que experimentan nuestros pacientes, donde las dificultades se convierten en oportunidades de crecimiento.</p>
+                    <p class="fade-in">A lo largo de 7 años, hemos consolidado un equipo multidisciplinario que ofrece servicios de psicología clínica, organizacional y educativa, siempre con el objetivo de brindar atención integral y personalizada.</p>
+                    <p class="fade-in">Nuestra misión es proporcionar herramientas terapéuticas efectivas que empoderen a las personas para enfrentar sus desafíos, mejorar su bienestar mental y alcanzar su máximo potencial en todas las áreas de su vida.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="text-center p-4 bg-white rounded shadow-sm fade-in">
+                                <h3 class="text-primary">7+</h3>
+                                <p>Años de Experiencia</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="text-center p-4 bg-white rounded shadow-sm fade-in">
+                                <h3 class="text-primary">1000+</h3>
+                                <p>Pacientes Atendidos</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="text-center p-4 bg-white rounded shadow-sm fade-in">
+                                <h3 class="text-primary">5</h3>
+                                <p>Especialistas Certificados</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="text-center p-4 bg-white rounded shadow-sm fade-in">
+                                <h3 class="text-primary">98%</h3>
+                                <p>Satisfacción del Paciente</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="services-section">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h4>Terapia Individual</h4>
+                        <p>Sesiones personalizadas para abordar problemas de ansiedad, depresión, estrés, trauma y más, adaptadas a tus necesidades específicas.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Terapia de Pareja</h4>
+                        <p>Mejora la comunicación, resuelve conflictos y fortalece tu relación con herramientas profesionales y un enfoque empático.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h4>Terapia Familiar</h4>
+                        <p>Intervenciones diseñadas para mejorar la dinámica familiar, resolver conflictos y fortalecer los vínculos entre miembros.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h4>Psicología Organizacional</h4>
+                        <p>Servicios de consultoría para empresas: selección de personal, clima laboral, desarrollo de talento y bienestar corporativo.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>Orientación Vocacional</h4>
+                        <p>Evaluaciones y acompañamiento para estudiantes que buscan claridad en su camino profesional y educativo.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>Talleres Grupales</h4>
+                        <p>Espacios de crecimiento personal en grupo: manejo de estrés, inteligencia emocional, autoestima y más.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipo -->
+    <section id="equipo" class="team-section">
+        <div class="container">
+            <h2 class="section-title">Nuestro Equipo</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="team-member fade-in">
+                        <h5>Dra. Karen Paola Mut Balan</h5>
+                        <p class="text-muted">Directora General / Psicóloga</p>
+                        <p>Especialista en psicología clínica con más de 10 años de experiencia. Fundadora de El Crisol Terapéutico y supervisora de todos los casos clínicos.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="team-member fade-in">
+                        <h5>Lic. Roberto Castro</h5>
+                        <p class="text-muted">Gerente de Servicios Organizacionales y Talento Humano</p>
+                        <p>Experto en psicología organizacional con amplia experiencia en consultoría empresarial y desarrollo de talento humano.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="team-member fade-in">
+                        <h5>Mtra. Sofía Núñez</h5>
+                        <p class="text-muted">Psicóloga Clínica - Terapeuta Individual y Grupal</p>
+                        <p>Especialista en terapia cognitivo-conductual y enfoques humanistas para el tratamiento de trastornos de ansiedad y del estado de ánimo.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="team-member fade-in">
+                        <h5>Lic. Daniel Flores</h5>
+                        <p class="text-muted">Coordinador Administrativo y de Operaciones</p>
+                        <p>Responsable de la gestión administrativa y operativa del centro, garantizando la excelencia en la experiencia del paciente.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="team-member fade-in">
+                        <h5>Patricia Ramos</h5>
+                        <p class="text-muted">Psicóloga Organizacional Junior</p>
+                        <p>Especialista en evaluación y desarrollo organizacional, con enfoque en bienestar laboral y clima organizacional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificaciones -->
+    <section class="certifications-section">
+        <div class="container">
+            <h2 class="section-title">Certificaciones y Reconocimientos</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <p class="mb-5">Nuestro equipo cuenta con certificaciones y membresías en las principales asociaciones de psicología a nivel nacional e internacional, garantizando la más alta calidad en nuestros servicios.</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-6 col-md-3 text-center">
+                            <img src="https://via.placeholder.com/150x80/1a3a5f/ffffff?text=Certificación+1" class="certification-logo img-fluid" alt="Certificación 1">
+                        </div>
+                        <div class="col-6 col-md-3 text-center">
+                            <img src="https://via.placeholder.com/150x80/4a7ba6/ffffff?text=Certificación+2" class="certification-logo img-fluid" alt="Certificación 2">
+                        </div>
+                        <div class="col-6 col-md-3 text-center">
+                            <img src="https://via.placeholder.com/150x80/6c63ff/ffffff?text=Certificación+3" class="certification-logo img-fluid" alt="Certificación 3">
+                        </div>
+                        <div class="col-6 col-md-3 text-center">
+                            <img src="https://via.placeholder.com/150x80/d4af37/000000?text=Certificación+4" class="certification-logo img-fluid" alt="Certificación 4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Precios -->
+    <section id="precios" class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Nuestros Planes y Precios</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="pricing-card fade-in">
+                        <h4>Sesión Individual</h4>
+                        <div class="price">$800 <span>/sesión</span></div>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i> 50 minutos de terapia</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Evaluación inicial</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Plan personalizado</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Seguimiento entre sesiones</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-primary">Reservar</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="pricing-card featured fade-in">
+                        <span class="badge bg-warning text-dark position-absolute top-0 start-50 translate-middle px-3">Recomendado</span>
+                        <h4>Paquete 4 Sesiones</h4>
+                        <div class="price">$2,800 <span>/paquete</span></div>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i> 4 sesiones de 50 minutos</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Evaluación integral</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Plan terapéutico completo</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Soporte por WhatsApp</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Material de apoyo</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-primary">Reservar</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="pricing-card fade-in">
+                        <h4>Terapia de Pareja</h4>
+                        <div class="price">$1,200 <span>/sesión</span></div>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i> 75 minutos de terapia</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Evaluación de la relación</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Técnicas de comunicación</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Ejercicios prácticos</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-primary">Reservar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-8 mx-auto text-center">
+                    <h4>Horarios de Atención</h4>
+                    <p>Lunes a Viernes: 9:00 AM - 8:00 PM</p>
+                    <p>Sábados: 9:00 AM - 2:00 PM</p>
+                    <p class="text-muted">* Horarios sujetos a disponibilidad. Agenda tu cita con anticipación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Lo que Dicen Nuestros Pacientes</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card fade-in">
+                        <p>"El Crisol Terapéutico cambió mi vida. Después de años luchando con ansiedad, finalmente encontré las herramientas para manejarla. La Dra. Karen es excepcional."</p>
+                        <div class="mt-3">
+                            <h5>María González</h5>
+                            <p class="text-muted">Paciente desde 2020</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card fade-in">
+                        <p>"La terapia de pareja nos salvó nuestro matrimonio. Aprendimos a comunicarnos de manera efectiva y a resolver conflictos de forma saludable. Altamente recomendado."</p>
+                        <div class="mt-3">
+                            <h5>Carlos y Ana Rodríguez</h5>
+                            <p class="text-muted">Pacientes desde 2021</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card fade-in">
+                        <p>"Como empresa, contratamos sus servicios organizacionales y los resultados fueron extraordinarios. Mejoró notablemente el clima laboral y la productividad."</p>
+                        <div class="mt-3">
+                            <h5>Roberto Silva</h5>
+                            <p class="text-muted">CEO, TechSolutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item fade-in">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    ¿Cómo sé si necesito terapia psicológica?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Si experimentas dificultades emocionales persistentes, problemas en tus relaciones, cambios en tus patrones de sueño o alimentación, o simplemente sientes que no estás funcionando en tu máximo potencial, la terapia puede ser beneficiosa. Ofrecemos una evaluación inicial sin compromiso para determinar si nuestros servicios son adecuados para ti.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item fade-in">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    ¿Qué enfoques terapéuticos utilizan?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Nuestro equipo está capacitado en diversos enfoques como terapia cognitivo-conductual, humanista, sistémica y mindfulness. Adaptamos nuestro enfoque según las necesidades específicas de cada paciente, creando un plan terapéutico personalizado.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item fade-in">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    ¿Ofrecen sesiones en línea?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Sí, ofrecemos tanto sesiones presenciales en nuestra ubicación en Ciudad de México como sesiones en línea a través de plataformas seguras. Las sesiones en línea han demostrado ser igual de efectivas que las presenciales para la mayoría de casos.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item fade-in">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                    ¿Cuánto tiempo suele durar un proceso terapéutico?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    La duración varía según cada caso y los objetivos establecidos. Algunos pacientes experimentan mejorías significativas en 8-12 sesiones, mientras que otros pueden requerir un proceso más extenso. Evaluamos el progreso regularmente y ajustamos el plan según sea necesario.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item fade-in">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                                    ¿Qué medidas toman para garantizar la confidencialidad?
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    La confidencialidad es fundamental en nuestro trabajo. Cumplimos estrictamente con el código de ética profesional y las leyes de protección de datos. Toda la información se maneja de forma segura y confidencial, con sistemas de almacenamiento protegidos y protocolos de privacidad.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <h2 class="section-title text-white">Contáctanos</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Calle Amado Nervo 7, Sta María la Ribera, Cuauhtémoc, 06400 Ciudad de México, CDMX</p>
+                        <p><i class="fas fa-phone"></i> +52 55 5302 9187</p>
+                        <p><i class="fas fa-envelope"></i> elcrisolterapeutico.com</p>
+                        <p><i class="fas fa-clock"></i> Lunes a Viernes: 9:00 AM - 8:00 PM</p>
+                        <p><i class="fas fa-clock"></i> Sábados: 9:00 AM - 2:00 PM</p>
+                    </div>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <form class="fade-in">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Nombre completo">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Correo electrónico">
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" class="form-control" placeholder="Teléfono">
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select">
+                                <option selected>Selecciona el servicio de interés</option>
+                                <option>Terapia Individual</option>
+                                <option>Terapia de Pareja</option>
+                                <option>Terapia Familiar</option>
+                                <option>Psicología Organizacional</option>
+                                <option>Orientación Vocacional</option>
+                                <option>Talleres Grupales</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="4" placeholder="Mensaje"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-light">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5>El Crisol Terapéutico</h5>
+                    <p>7 años ofreciendo servicios de psicología clínica integral con un enfoque humano y profesional.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#equipo">Equipo</a></li>
+                        <li><a href="#precios">Precios</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Servicios</h5>
+                    <ul>
+                        <li><a href="#">Terapia Individual</a></li>
+                        <li><a href="#">Terapia de Pareja</a></li>
+                        <li><a href="#">Terapia Familiar</a></li>
+                        <li><a href="#">Psicología Organizacional</a></li>
+                        <li><a href="#">Talleres Grupales</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Aviso Legal</a></li>
+                        <li><a href="#">Política de Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center pt-4 border-top border-secondary">
+                <p>&copy; 2025 El Crisol Terapéutico. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Animación de elementos al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
+                    }
+                });
+            };
+            
+            // Ejecutar al cargar la página
+            fadeInOnScroll();
+            
+            // Ejecutar al hacer scroll
+            window.addEventListener('scroll', fadeInOnScroll);
+            
+            // Smooth scroll para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Cambiar navbar al hacer scroll
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if(window.scrollY > 50) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
